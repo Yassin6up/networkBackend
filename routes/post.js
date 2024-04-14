@@ -111,6 +111,7 @@ postrouter.get(
 );
 postrouter.get("/getposts", checkTokenMiddleware, async (req, res, next) => {
   try {
+    console.log("user id :  ", req.uid);
     const result = await GetPosts({ currentUser: req.uid });
     res.status(200).json(result);
   } catch (error) {
