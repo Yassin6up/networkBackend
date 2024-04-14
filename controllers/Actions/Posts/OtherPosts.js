@@ -62,12 +62,18 @@ const GetSinglePost = async ({ postid }) => {
 
 const ComputedPosts = async ({ currentUser }) => {
   try {
-    const chattedWithArray = await DMKeys({
+    let chattedWithArray = await DMKeys({
       name: "dms",
       value: currentUser,
       child: "chats",
     });
-    console.log("chatted" ,chattedWithArray)
+
+    // Ensure chattedWithArray is an array, even if it's null
+    if (!Array.isArray(chattedWithArray)) {
+      chattedWithArray = [];
+    }
+
+    console.log("chatted", chattedWithArray);
 
     const postRef = getDatabase().ref("posts");
     const snapshot = await postRef.once("value");
