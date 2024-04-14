@@ -67,6 +67,7 @@ const ComputedPosts = async ({ currentUser }) => {
       value: currentUser,
       child: "chats",
     });
+    console.log("chatted" ,chattedWithArray)
 
     const postRef = getDatabase().ref("posts");
     const snapshot = await postRef.once("value");
