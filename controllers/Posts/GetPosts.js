@@ -17,7 +17,7 @@ const GetPosts = async ({ currentUser }) => {
 
     return sortedPosts;
   } catch (error) {
-    throw new Error("Failed to retrieve posts."); // Throw error if retrieval fails
+    throw new Error("Failed to retrieve posts." , error ); // Throw error if retrieval fails
   }
 };
 
